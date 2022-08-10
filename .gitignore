@@ -94,3 +94,6 @@ iOSInjectionProject/
 
 ## Xcode
 xcshareddata/
+
+## Authentication
+Authentication.swift
