@@ -88,3 +88,12 @@ fastlane/test_output
 # https://github.com/johnno1962/injectionforxcode
 
 iOSInjectionProject/
+
+## macOS
+*.DS_Store
+
+## Xcode
+xcshareddata/
+
+## Authentication
+Authentication.swift

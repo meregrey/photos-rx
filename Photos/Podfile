@@ -1,0 +1,9 @@
+platform :ios, '15.5'
+inhibit_all_warnings!
+
+use_frameworks!
+
+target 'Photos' do
+    pod 'RxSwift', '6.5.0'
+    pod 'RxCocoa', '6.5.0'
+end
