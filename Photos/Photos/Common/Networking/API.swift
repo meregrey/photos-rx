@@ -15,8 +15,9 @@ final class API: APIType {
     
     private init() {}
     
-    func searchPhotos(query: String) -> Observable<[Photo]> {
-        guard let request = Endpoint(for: .searchPhotos(query: query)).makeRequest() else { return Observable.just([]) }
+    func searchPhotos(query: String, page: Int) -> Observable<[Photo]> {
+        let endpoint = Endpoint(for: .searchPhotos(query: query, page: page))
+        guard let request = endpoint.makeRequest() else { return Observable.just([]) }
         
         return URLSession.shared.rx.json(request: request)
             .observe(on: backgroundScheduler)

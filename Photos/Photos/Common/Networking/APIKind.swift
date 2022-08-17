@@ -8,7 +8,7 @@
 import Foundation
 
 enum APIKind {
-    case searchPhotos(query: String)
+    case searchPhotos(query: String, page: Int)
     
     var path: String {
         switch self {
@@ -19,8 +19,9 @@ enum APIKind {
     
     var queryItems: [URLQueryItem]? {
         switch self {
-        case .searchPhotos(let query):
-            return [URLQueryItem(name: "query", value: query)]
+        case .searchPhotos(let query, let page):
+            return [URLQueryItem(name: "query", value: query),
+                    URLQueryItem(name: "page", value: "\(page)")]
         }
     }
 }
