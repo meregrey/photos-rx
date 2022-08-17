@@ -20,26 +20,46 @@ final class SearchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureSearchController()
-        bindViewModel()
+        bindInput()
+        bindOutput()
     }
     
     private func configureSearchController() {
         navigationItem.searchController = searchController
     }
     
-    private func bindViewModel() {
+    private func bindInput() {
         searchController.searchBar.rx.text.orEmpty
-            .asDriver()
-            .debounce(.milliseconds(300))
+            .debounce(.milliseconds(300), scheduler: MainScheduler.instance)
             .distinctUntilChanged()
-            .drive(viewModel.searchTerm)
+            .bind(to: viewModel.searchTerm)
             .disposed(by: disposeBag)
         
+        photoListTableView.rx.contentOffset
+            .asDriver()
+            .drive(onNext: { [weak self] _ in
+                if let searchBar = self?.searchController.searchBar, searchBar.isFirstResponder {
+                    searchBar.resignFirstResponder()
+                }
+            })
+            .disposed(by: disposeBag)
+        
+        photoListTableView.rx.contentOffset
+            .map(isNearBottom)
+            .bind(to: viewModel.shouldLoadMorePhotos)
+            .disposed(by: disposeBag)
+    }
+    
+    private func bindOutput() {
         viewModel.photos
             .asDriver()
             .drive(photoListTableView.rx.items(cellIdentifier: PhotoListTableViewCell.identifier, cellType: PhotoListTableViewCell.self)) { _, viewModel, cell in
                 cell.configure(with: viewModel)
             }
             .disposed(by: disposeBag)
+    }
+    
+    private func isNearBottom(_: CGPoint) -> Bool {
+        return photoListTableView.isNearBottom()
     }
 }
