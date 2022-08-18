@@ -19,13 +19,14 @@ final class SearchViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureSearchController()
+        configureNavigationItem()
         bindInput()
         bindOutput()
     }
     
-    private func configureSearchController() {
+    private func configureNavigationItem() {
         navigationItem.searchController = searchController
+        navigationItem.backButtonTitle = ""
     }
     
     private func bindInput() {
@@ -48,6 +49,13 @@ final class SearchViewController: UIViewController {
             .map(isNearBottom)
             .bind(to: viewModel.shouldLoadMorePhotos)
             .disposed(by: disposeBag)
+        
+        photoListTableView.rx.modelSelected(PhotoViewModel.self)
+            .asDriver()
+            .drive(onNext: {
+                self.showDetail(with: $0)
+            })
+            .disposed(by: disposeBag)
     }
     
     private func bindOutput() {
@@ -61,5 +69,12 @@ final class SearchViewController: UIViewController {
     
     private func isNearBottom(_: CGPoint) -> Bool {
         return photoListTableView.isNearBottom()
+    }
+    
+    private func showDetail(with viewModel: PhotoViewModel) {
+        let storyboard = UIStoryboard(name: ResourceName.Storyboard.main, bundle: nil)
+        guard let detailViewController = storyboard.instantiateViewController(withIdentifier: DetailViewController.identifier) as? DetailViewController else { return }
+        detailViewController.viewModel = viewModel
+        navigationController?.pushViewController(detailViewController, animated: true)
     }
 }
