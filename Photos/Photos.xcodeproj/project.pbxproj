@@ -17,6 +17,9 @@
 		674E5EA528A139CB0057153F /* ImageLoadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674E5EA428A139CB0057153F /* ImageLoadable.swift */; };
 		674E5EA728A13BBA0057153F /* PhotoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 674E5EA628A13BBA0057153F /* PhotoViewModel.swift */; };
 		6770458528A882F0009CF1CF /* UIScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6770458428A882F0009CF1CF /* UIScrollView.swift */; };
+		6770458928ADCF06009CF1CF /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6770458828ADCF06009CF1CF /* DetailViewController.swift */; };
+		6770458B28ADE7C1009CF1CF /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6770458A28ADE7C1009CF1CF /* UIViewController.swift */; };
+		6770458E28ADEDC7009CF1CF /* ResourceName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6770458D28ADEDC7009CF1CF /* ResourceName.swift */; };
 		6796C1EB289B5687005B4BE0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6796C1EA289B5687005B4BE0 /* AppDelegate.swift */; };
 		6796C1ED289B5687005B4BE0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6796C1EC289B5687005B4BE0 /* SceneDelegate.swift */; };
 		6796C1F2289B5687005B4BE0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6796C1F0289B5687005B4BE0 /* Main.storyboard */; };
@@ -43,6 +46,9 @@
 		674E5EA428A139CB0057153F /* ImageLoadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoadable.swift; sourceTree = "<group>"; };
 		674E5EA628A13BBA0057153F /* PhotoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewModel.swift; sourceTree = "<group>"; };
 		6770458428A882F0009CF1CF /* UIScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIScrollView.swift; sourceTree = "<group>"; };
+		6770458828ADCF06009CF1CF /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		6770458A28ADE7C1009CF1CF /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
+		6770458D28ADEDC7009CF1CF /* ResourceName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceName.swift; sourceTree = "<group>"; };
 		6796C1E7289B5687005B4BE0 /* Photos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Photos.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6796C1EA289B5687005B4BE0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6796C1EC289B5687005B4BE0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -106,8 +112,17 @@
 				674E5E9428A0B0DC0057153F /* UIImage.swift */,
 				6770458428A882F0009CF1CF /* UIScrollView.swift */,
 				67DAA757289B9D9D003310FF /* UIView.swift */,
+				6770458A28ADE7C1009CF1CF /* UIViewController.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		6770458628ACEFA3009CF1CF /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				6770458828ADCF06009CF1CF /* DetailViewController.swift */,
+			);
+			path = Detail;
 			sourceTree = "<group>";
 		};
 		6796C1DE289B5687005B4BE0 = {
@@ -132,6 +147,7 @@
 			isa = PBXGroup;
 			children = (
 				67DAA74F289B92F5003310FF /* Search */,
+				6770458628ACEFA3009CF1CF /* Detail */,
 				67DAA756289B9D94003310FF /* Common */,
 			);
 			path = Photos;
@@ -153,6 +169,7 @@
 				6796C1F8289B5689005B4BE0 /* Info.plist */,
 				6796C1F5289B5689005B4BE0 /* LaunchScreen.storyboard */,
 				6796C1F0289B5687005B4BE0 /* Main.storyboard */,
+				6770458D28ADEDC7009CF1CF /* ResourceName.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -335,6 +352,7 @@
 				674E5E9D28A12C020057153F /* ImageCache.swift in Sources */,
 				67DAA760289BBCF8003310FF /* Photo.swift in Sources */,
 				6770458528A882F0009CF1CF /* UIScrollView.swift in Sources */,
+				6770458928ADCF06009CF1CF /* DetailViewController.swift in Sources */,
 				67DAA758289B9D9D003310FF /* UIView.swift in Sources */,
 				67DAA754289B9A97003310FF /* PhotoListTableViewCell.swift in Sources */,
 				674E5EA028A132B90057153F /* ImageLoader.swift in Sources */,
@@ -342,7 +360,9 @@
 				67DAA751289B9562003310FF /* SearchViewController.swift in Sources */,
 				674E5E9328A0A2070057153F /* SearchViewModel.swift in Sources */,
 				6796C1EB289B5687005B4BE0 /* AppDelegate.swift in Sources */,
+				6770458B28ADE7C1009CF1CF /* UIViewController.swift in Sources */,
 				67DAA75B289BBC7C003310FF /* API.swift in Sources */,
+				6770458E28ADEDC7009CF1CF /* ResourceName.swift in Sources */,
 				674E5EA528A139CB0057153F /* ImageLoadable.swift in Sources */,
 				6796C1ED289B5687005B4BE0 /* SceneDelegate.swift in Sources */,
 				674E5EA728A13BBA0057153F /* PhotoViewModel.swift in Sources */,
