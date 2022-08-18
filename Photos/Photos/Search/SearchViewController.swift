@@ -24,6 +24,11 @@ final class SearchViewController: UIViewController {
         bindOutput()
     }
     
+    override func didMove(toParent parent: UIViewController?) {
+        super.didMove(toParent: parent)
+        if parent == nil { disposeBag = DisposeBag() }
+    }
+    
     private func configureNavigationItem() {
         navigationItem.searchController = searchController
         navigationItem.backButtonTitle = ""
@@ -38,10 +43,8 @@ final class SearchViewController: UIViewController {
         
         photoListTableView.rx.contentOffset
             .asDriver()
-            .drive(onNext: { [weak self] _ in
-                if let searchBar = self?.searchController.searchBar, searchBar.isFirstResponder {
-                    searchBar.resignFirstResponder()
-                }
+            .drive(onNext: { _ in
+                self.resignSearchBarStatus()
             })
             .disposed(by: disposeBag)
         
@@ -65,6 +68,11 @@ final class SearchViewController: UIViewController {
                 cell.configure(with: viewModel)
             }
             .disposed(by: disposeBag)
+    }
+    
+    private func resignSearchBarStatus() {
+        let searchBar = searchController.searchBar
+        if searchBar.isFirstResponder { searchBar.resignFirstResponder() }
     }
     
     private func isNearBottom(_: CGPoint) -> Bool {
