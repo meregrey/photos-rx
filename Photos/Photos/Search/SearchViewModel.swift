@@ -16,12 +16,14 @@ final class SearchViewModel {
     
     private let photoViewModels = PublishRelay<[PhotoViewModel]>()
     private let api: APIType
+    private let imageLoader: ImageLoadable
     
     private var page = 0
     private var disposeBag = DisposeBag()
     
-    init(api: APIType = API.shared) {
+    init(api: APIType = API.shared, imageLoader: ImageLoadable = ImageLoader.shared) {
         self.api = api
+        self.imageLoader = imageLoader
         
         searchTerm
             .distinctUntilChanged()
@@ -45,7 +47,7 @@ final class SearchViewModel {
     private func transform(_ photos: [Photo]) -> Observable<[PhotoViewModel]> {
         let urls = photos.compactMap { $0.url }
         
-        _ = ImageLoader.shared.loadImages(from: urls)
+        _ = imageLoader.loadImages(from: urls)
             .subscribe(onCompleted: {
                 if photos.count > 0 {
                     var photoViewModels = self.photos.value

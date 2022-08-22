@@ -1,9 +1,15 @@
 platform :ios, '15.5'
 inhibit_all_warnings!
 
-use_frameworks!
-
 target 'Photos' do
-    pod 'RxSwift', '6.5.0'
-    pod 'RxCocoa', '6.5.0'
+  use_frameworks!
+
+  pod 'RxSwift', '6.5.0'
+  pod 'RxCocoa', '6.5.0'
+
+  target 'PhotosTests' do
+    inherit! :search_paths
+    pod 'RxTest'
+    pod 'RxBlocking'
+  end
 end
