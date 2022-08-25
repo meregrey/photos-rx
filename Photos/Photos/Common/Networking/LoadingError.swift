@@ -8,5 +8,6 @@
 import Foundation
 
 enum LoadingError: Error {
-    case invalidImageData
+    case failedToGenerateData
+    case invalidData
 }
