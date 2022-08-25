@@ -9,7 +9,14 @@ import UIKit
 
 @main
 final class AppDelegate: UIResponder, UIApplicationDelegate {
+    private let diskCache = DiskCache.shared
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        diskCache.createDirectoryIfNeeded()
         return true
+    }
+    
+    func applicationWillTerminate(_ application: UIApplication) {
+        diskCache.clear()
     }
 }
