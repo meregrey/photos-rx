@@ -42,6 +42,7 @@ final class SearchViewModel {
     }
     
     private func searchPhotos(for searchTerm: String) -> Observable<[Photo]> {
+        DiskCache.shared.clear()
         page = 1
         return api.searchPhotos(query: searchTerm, page: page)
     }
