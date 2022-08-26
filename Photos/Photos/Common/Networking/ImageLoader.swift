@@ -34,6 +34,10 @@ final class ImageLoader: ImageLoadable {
         return nil
     }
     
+    func clearCache() {
+        diskCache.clear()
+    }
+    
     private func notExists(for url: URL) -> Bool {
         return memoryCache.image(for: url) == nil && diskCache.exists(named: url.imageName) == false
     }
