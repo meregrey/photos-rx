@@ -35,13 +35,21 @@ final class SearchViewModel {
         shouldLoadMorePhotos
             .distinctUntilChanged()
             .filter { $0 }
-            .subscribe(onNext: loadMorePhotos)
+            .flatMap(loadMorePhotos)
+            .flatMap(transform)
+            .bind(to: photos)
             .disposed(by: disposeBag)
     }
     
     private func searchPhotos(for searchTerm: String) -> Observable<[Photo]> {
+        imageLoader.clearCache()
         page = 1
         return api.searchPhotos(query: searchTerm, page: page)
+    }
+    
+    private func loadMorePhotos(_: Bool) -> Observable<[Photo]> {
+        page += 1
+        return api.searchPhotos(query: searchTerm.value, page: page)
     }
     
     private func transform(_ photos: [Photo]) -> Observable<[PhotoViewModel]> {
@@ -59,14 +67,5 @@ final class SearchViewModel {
             })
         
         return photoViewModels.asObservable()
-    }
-    
-    private func loadMorePhotos(_: Bool) {
-        page += 1
-        
-        api.searchPhotos(query: searchTerm.value, page: page)
-            .flatMap(transform)
-            .bind(to: photos)
-            .disposed(by: disposeBag)
     }
 }

@@ -17,4 +17,6 @@ struct MockImageLoader: ImageLoadable {
     func image(from url: URL) -> UIImage? {
         return nil
     }
+    
+    func clearCache() {}
 }
