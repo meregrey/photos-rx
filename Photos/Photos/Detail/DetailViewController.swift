@@ -19,7 +19,7 @@ final class DetailViewController: UIViewController {
     
     private func configureViews() {
         navigationItem.largeTitleDisplayMode = .never
-        title = viewModel.userName()
-        imageView.image = viewModel.image()
+        title = viewModel.userName
+        imageView.image = viewModel.image
     }
 }
