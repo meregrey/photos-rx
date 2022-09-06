@@ -1,6 +1,6 @@
 # Photos
 
-> RxSwift를 사용하여 사진 목록을 표시하는 iOS 앱
+> RxSwift를 사용하여 사진을 검색하는 iOS 앱
 
 <img src="Assets/photos.gif" alt="Photos"/>
 
