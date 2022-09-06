@@ -41,7 +41,7 @@ final class SearchViewModelTests: XCTestCase {
         sut.searchTerm.accept("test")
         
         // then
-        XCTAssertEqual(try photos.toBlocking().first()?.first?.userName(), "name_1")
+        XCTAssertEqual(try photos.toBlocking().first()?.first?.userName, "name_1")
     }
     
     func testLoadMorePhotos() {
@@ -53,7 +53,7 @@ final class SearchViewModelTests: XCTestCase {
         sut.shouldLoadMorePhotos.accept(true)
         
         // then
-        XCTAssertEqual(try photos.toBlocking().first()?.first?.userName(), "name_1")
-        XCTAssertEqual(try photos.toBlocking().last()?.last?.userName(), "name_2")
+        XCTAssertEqual(try photos.toBlocking().first()?.first?.userName, "name_1")
+        XCTAssertEqual(try photos.toBlocking().last()?.last?.userName, "name_2")
     }
 }
