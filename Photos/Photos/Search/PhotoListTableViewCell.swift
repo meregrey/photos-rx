@@ -20,7 +20,7 @@ final class PhotoListTableViewCell: UITableViewCell {
     }
     
     func configure(with viewModel: PhotoViewModel) {
-        photoImageView.image = viewModel.image()
-        userNameLabel.text = viewModel.userName()
+        photoImageView.image = viewModel.image
+        userNameLabel.text = viewModel.userName
     }
 }

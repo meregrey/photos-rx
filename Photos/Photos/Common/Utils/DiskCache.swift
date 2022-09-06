@@ -8,7 +8,7 @@
 import Foundation
 
 final class DiskCache {
-    static let shared = DiskCache(fileManager: FileManager.default, directoryName: Bundle.main.bundleIdentifier ?? "")
+    static let `default` = DiskCache(fileManager: FileManager.default, directoryName: Bundle.main.bundleIdentifier ?? "")
     
     private let fileManager: FileManager
     private let directoryName: String

@@ -11,7 +11,7 @@ import UIKit
 final class ImageLoader: ImageLoadable {
     static let shared = ImageLoader()
     
-    private let diskCache = DiskCache.shared
+    private let diskCache = DiskCache.default
     private let memoryCache = ImageCache()
     private let backgroundScheduler = ConcurrentDispatchQueueScheduler(qos: .default)
     
